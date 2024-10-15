@@ -37,8 +37,8 @@ class CommonTextField extends StatelessWidget {
       //margin: EdgeInsets.only(left: 4.w,right: 4.w,),
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
-         border: Border.all(color:const Color(0xFF4494CE).withOpacity(0.1), width: 1.w),
-        borderRadius: BorderRadius.circular(28.r),
+         border: Border.all(color:const Color(0xFF1A6BA8).withOpacity(0.3), width: 1.w),
+        borderRadius: BorderRadius.circular(12.r),
       ),
       child: SizedBox(
         height: 44.h,

@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,64 +18,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  checkConnection()async{
-    // final List<ConnectivityResult> connectivityResult = await (Connectivity().checkConnectivity());
-    // if (connectivityResult.contains(ConnectivityResult.mobile)) {}
-    // else if (connectivityResult.contains(ConnectivityResult.wifi)) {}
-    // else if (connectivityResult.contains(ConnectivityResult.ethernet)) {}
-    // else if (connectivityResult.contains(ConnectivityResult.vpn)) {}
-    // else if (connectivityResult.contains(ConnectivityResult.bluetooth)) {}
-    // else if (connectivityResult.contains(ConnectivityResult.other)) {}
-    // else if (connectivityResult.contains(ConnectivityResult.none)) {}
-  }
-
-
-
-
-  Duration _timeRemaining = const Duration(seconds: 0);
-  Timer? _timer;
 
   @override
   void initState() {
     super.initState();
-    _getTimeRemaining();
-    _startTimer();
   }
 
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
-
-  void _getTimeRemaining() {
-    final now = DateTime.now();
-    final eightAm = DateTime(now.year, now.month, now.day, 11, 30);
-    final sevenAm = DateTime(now.year, now.month, now.day, 10, 20);
-
-    if (now.isBefore(eightAm)) {
-      _timeRemaining = eightAm.difference(now);
-    } else if (now.isAfter(sevenAm) && now.isBefore(eightAm)) {
-      // Handle scenario where current time is between 7:00 AM and 8:00 AM
-      _timeRemaining = Duration(seconds: 0); // Already within work hours
-    } else {
-      // Reset for the next day if it's past 8:00 AM
-      _timeRemaining = Duration(hours: 24 - now.hour, minutes: 60 - now.minute);
-    }
-  }
-
-  void _startTimer() {
-    _timer = Timer.periodic(
-        Duration(seconds: 1),
-        (_) => setState(() {
-              _getTimeRemaining();
-            }));
-  }
 
   @override
   Widget build(BuildContext context) {
-    final String formattedTime =
-        '${_timeRemaining.inHours.toString().padLeft(2, '0')}:${(_timeRemaining.inMinutes % 60).toString().padLeft(2, '0')}:${(_timeRemaining.inSeconds % 60).toString().padLeft(2, '0')}';
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -133,9 +83,8 @@ class _HomePageState extends State<HomePage> {
           ),
           Row(
             children: [
-              commonMenu(()async {
-                checkConnection();
-              }, "Cat App"),
+              commonMenu(() {}, "Cat App"),
+
               commonMenu(() {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (_) => const ScrollTest()));
@@ -154,7 +103,7 @@ class _HomePageState extends State<HomePage> {
       child: Container(
         margin: EdgeInsets.all(8.sp),
         padding: EdgeInsets.all(12.sp),
-        // height: 92.h,
+        height: 80.h,
         width: 164.w,
         decoration: BoxDecoration(
           boxShadow: [
@@ -171,18 +120,15 @@ class _HomePageState extends State<HomePage> {
           color: const Color(0xFF1B3D79).withOpacity(.1),
           borderRadius: BorderRadius.circular(12.r),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              mName,
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge!
-                  .copyWith(fontSize: 16.sp),
-            ),
-          ],
+        child: Center(
+          child: Text(
+            textAlign:TextAlign.center ,
+            mName,
+            style: Theme.of(context)
+                .textTheme
+                .titleLarge!
+                .copyWith(fontSize: 16.sp),
+          ),
         ),
       ),
     );
