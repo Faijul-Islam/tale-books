@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "977561027553",
+    "project_id": "poltrebook-fa672",
+    "storage_bucket": "poltrebook-fa672.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977561027553:android:5bdd9311f84edd8d5408a0",
+        "android_client_info": {
+          "package_name": "com.mycompany.tale_book"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGj4TMPcbt1uFOReYSUZDUvViuKLLBez0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977561027553:android:bf5d89a4a40707ec5408a0",
+        "android_client_info": {
+          "package_name": "com.mycompany.talebook"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGj4TMPcbt1uFOReYSUZDUvViuKLLBez0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
