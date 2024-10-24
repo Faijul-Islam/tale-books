@@ -17,6 +17,7 @@ class CommonTextField extends StatelessWidget {
         this.inputFormatters,
       required this.textAlign,
       required this.redOnly,
+        this.validator,
       this.onTap})
       : super(key: key);
   final TextEditingController controler;
@@ -30,6 +31,7 @@ class CommonTextField extends StatelessWidget {
   final bool redOnly;
   final VoidCallback? onTap;
   final List<TextInputFormatter>? inputFormatters;
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,6 +53,7 @@ class CommonTextField extends StatelessWidget {
           readOnly: redOnly,
           onChanged: onChange,
           textAlign: textAlign,
+          validator: validator,
           // focusNode: _focusNode,
           style: Theme.of(context).textTheme.displaySmall!.copyWith(fontSize: 14),
           decoration: InputDecoration(

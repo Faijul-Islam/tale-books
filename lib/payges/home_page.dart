@@ -1,8 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:tale_book/common_widget/text_styles.dart';
 import 'package:tale_book/payges/scroll_test.dart';
+import 'package:tale_book/payges/shoping_part/screens/shope_screen.dart';
 import 'package:tale_book/payges/total_calculation.dart';
 import 'dart:math' as m;
 import 'cost_entry.dart';
@@ -18,12 +19,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   void initState() {
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -43,13 +42,13 @@ class _HomePageState extends State<HomePage> {
               commonMenu(() {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (_) => const UserEntryPage()));
-              }, "Customer add(গ্রাহক যোগ করুন)"),
+              }, "customerAdd".tr),
               commonMenu(() {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (_) => const CustomerListPage()));
-              }, "Customer List(গ্রাহক তালিকা"),
+              }, "customerList".tr),
             ],
           ),
           Row(
@@ -70,28 +69,37 @@ class _HomePageState extends State<HomePage> {
             children: [
               commonMenu(() {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (_) =>  ChatList()));
+                    context, MaterialPageRoute(builder: (_) => ChatList()));
               }, "Cat App"),
               commonMenu(() {
                 Navigator.push(
                     context, MaterialPageRoute(builder: (_) => CostEntry()));
               }, "Cost Entry"),
-
             ],
           ),
           Row(
             children: [
-              commonMenu(() {}, "Cat App"),
-
               commonMenu(() {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => const ScrollTest()));
+                //ShoppeScreen
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const ShoppeScreen()));
+              }, "Shoppe Screen"),
+              commonMenu(() {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const ScrollTest()));
               }, "test"),
-
             ],
           ),
+          Row(
+            children: [
+              TextButton(onPressed: (){
+                Get.updateLocale(Locale('en','US'));
+              }, child: Text("English")),
+              TextButton(onPressed: (){
+                Get.updateLocale(Locale('bn','BD'));
+              }, child: Text("Bangla")),
+            ],
+          )
         ],
       ),
     );
@@ -122,7 +130,7 @@ class _HomePageState extends State<HomePage> {
         ),
         child: Center(
           child: Text(
-            textAlign:TextAlign.center ,
+            textAlign: TextAlign.center,
             mName,
             style: Theme.of(context)
                 .textTheme

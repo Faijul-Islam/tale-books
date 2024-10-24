@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:provider/provider.dart';
+import 'package:tale_book/language/language.dart';
 import 'package:tale_book/payges/home_page.dart';
-
+import 'package:get/get.dart';
+import 'package:tale_book/payges/login_sreen.dart';
 import 'controler/customer_controler.dart';
+import 'controler/login/login_controler.dart';
 
 void main()async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,6 +20,7 @@ void main()async {
         projectId: "poltrebook-fa672"
     )
   );
+  Get.put(LoginController());
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => CustomerListControler()),
@@ -33,6 +37,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      translations: Language(),
+      locale: Locale('en',"US"),
+      fallbackLocale: Locale('en',"US"),
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -56,7 +63,7 @@ class PoultryBook extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return const HomePage();
+        return const LoginScreen();
       },
     );
   }
